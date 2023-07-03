@@ -1,0 +1,25 @@
+{
+    "name": "clemours/starwarslibb",
+    "description": "demo package",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Libraries\\starwarslib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Clément",
+            "email": "duvivier.clem@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "friendsofphp/php-cs-fixer": "^3.20",
+        "phpunit/phpunit": "^9.6||^10.2"
+    }
+}
