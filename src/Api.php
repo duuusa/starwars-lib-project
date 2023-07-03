@@ -10,23 +10,24 @@ class Api
 {
     public function getName(): string
     {
+        $url = 'https://www.starwars.com/databank';
         libxml_use_internal_errors(true); // Ignore HTML5 validation errors
 
         $dom = new \DOMDocument;
-        $dom->loadHTMLFile('https://www.starwars.com/databank');
+        $dom->loadHTMLFile($url);
 
         $xpath = new \DOMXPath($dom);
         $titles = $xpath->query('//h3[contains(@class, "title")]');
 
-        if ($titles->length > 0) {
+        if ($titles !== false && $titles->length > 0) {
             $name = '';
             foreach ($titles as $title) {
                 $name .= $title->textContent . ' ';
             }
             $name = preg_replace('/\s+/', ' ', $name); // Remove extra whitespace
-            return $name;
+            return (string) $name;
         } else {
-            return ''; //return blank string if no titles found
+            return ''; // Return blank string if no titles found
         }
     }
 }
